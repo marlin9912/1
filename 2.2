@@ -1,0 +1,41 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            Console.Write("Введите первое число (0-255): ");
+            int firstNumber = Convert.ToInt32(Console.ReadLine());
+
+            Console.Write("Введите второе число (0-255): ");
+            int secondNumber = Convert.ToInt32(Console.ReadLine());
+
+            if (firstNumber < 0 || firstNumber > 255 || secondNumber < 0 || secondNumber > 255)
+            {
+                throw new ArgumentOutOfRangeException("Числа должны быть в диапазоне от 0 до 255.");
+            }
+
+            if (secondNumber == 0)
+            {
+                throw new DivideByZeroException("Деление на ноль невозможно.");
+            }
+
+            double result = (double)firstNumber / secondNumber;
+            Console.WriteLine($"Результат деления {firstNumber} на {secondNumber} = {result}");
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Ошибка: введено некорректное значение.");
+        }
+        catch (ArgumentOutOfRangeException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+        catch (DivideByZeroException ex)
+        {
+            Console.WriteLine($"Ошибка: {ex.Message}");
+        }
+    }
+}
