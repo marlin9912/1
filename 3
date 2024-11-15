@@ -1,0 +1,38 @@
+using System;
+using System.Text;
+
+class Program
+{
+    static void Main()
+    {
+        int number = 50; // Введите новое значение
+        string primeFactors = GetPrimeFactors(number);
+        Console.WriteLine($"Простые множители числа {number}: {primeFactors}");
+    }
+
+    static string GetPrimeFactors(int number)
+    {
+        StringBuilder factors = new StringBuilder(); // Строка для  множителей
+        int divisor = 2; // Начинаем с наименьшего простого числа
+
+        while (number > 1) // Продолжаем, пока число больше 1
+        {
+            // Пока число делится на текущий делитель
+            while (number % divisor == 0)
+            {
+                // Добавляем делитель к строке факторов
+                factors.Append(divisor + " × ");
+                number /= divisor; // Делим число на делитель
+            }
+            divisor++; // Переходим к следующему числу
+        }
+
+        // Убираем последний символ × и пробел из строки
+        if (factors.Length > 0)
+        {
+            factors.Length -= 3; // Удаляем последние  × 
+        }
+
+        return factors.ToString(); // Возвращаем строку с простыми множителями
+    }
+}
