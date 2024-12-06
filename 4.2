@@ -1,0 +1,73 @@
+using System;
+
+abstract class Animal
+{
+    private string name; 
+    private int weight;
+
+    public Animal(string name, int weight)
+    {
+        this.name = name;
+        this.weight = weight;
+    }
+
+    public abstract void MakeSound();
+
+    public void Print()
+    {
+        Console.WriteLine($"Name: {name}, Weight: {weight} kg");
+    }
+}
+
+class Cat : Animal
+{
+    public Cat(string name, int weight) : base(name, weight)
+    {
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Meow!");
+    }
+}
+
+class Dog : Animal
+{
+    public Dog(string name, int weight) : base(name, weight)
+    {
+    }
+
+    public override void MakeSound()
+    {
+        Console.WriteLine("Woof!");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+
+        Cat cat1 = new Cat("boris", 4);
+        Cat cat2 = new Cat("kot", 5);
+
+        Dog dog1 = new Dog("pes", 10);
+        Dog dog2 = new Dog("sobaka", 12);
+
+        Console.WriteLine("Cat 1:");
+        cat1.Print();
+        cat1.MakeSound();
+
+        Console.WriteLine("\nCat 2:");
+        cat2.Print();
+        cat2.MakeSound();
+
+        Console.WriteLine("\nDog 1:");
+        dog1.Print();
+        dog1.MakeSound();
+
+        Console.WriteLine("\nDog 2:");
+        dog2.Print();
+        dog2.MakeSound();
+    }
+}
